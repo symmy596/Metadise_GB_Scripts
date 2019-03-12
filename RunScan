@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for i in * ; do
+	if [ -d $i ] ; then
+	cd $i 
+	metadise_pyro
+	cd ../
+	fi
+done

@@ -1,0 +1,13 @@
+#!/bin/bash
+for i in * ; do 
+if [ -d $i ] ; then
+cd $i
+if [ ! -s con_o0001.xyz ]
+then
+metadise_pyro
+cd ..
+else
+cd ..
+fi
+fi
+done

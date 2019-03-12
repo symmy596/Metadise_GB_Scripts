@@ -1,0 +1,34 @@
+#!/bin/bash
+
+currentdir=`pwd`
+
+echo 0 > Fin.txt
+echo 0 > Tot.txt
+
+FinFile=$currentdir/Fin.txt
+TotFile=$currentdir/Tot.txt
+
+
+for i in * ; do
+	if [ -d $i ] ; then 
+		cd  $i
+		Tot=$[$(cat $TotFile) + 1]
+		echo $Tot > $TotFile
+		if [ -e con_o0001.xyz ] ; then
+		       Fin=$[$(cat $FinFile) + 1]
+		       echo $Fin > $FinFile
+		fi
+		cd ..
+	fi
+done
+
+Total=$(cat $TotFile)
+Final=$(cat $FinFile)
+rm $FinFile
+rm $TotFile
+
+ComPer=$(awk "BEGIN {print (100/$Total)*$Final}") 
+echo "Total number of GB configurations:" $Total
+echo "Total number of finished calculations:" $Final
+echo "Percentage completion:" $ComPer"%"
+

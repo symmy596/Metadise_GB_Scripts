@@ -1,0 +1,15 @@
+#!/bin/bash
+
+cp ../poten.txt .
+cp ../tail.txt .
+cp ../top.txt .
+
+for i in * ; do
+	if [ -d $i ] ; then 
+		cd $i
+		cp ../tail.txt .
+		cp ../top.txt .
+		cp ../poten.txt .
+		cd ../
+	fi
+done
